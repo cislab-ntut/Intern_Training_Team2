@@ -93,6 +93,3 @@ def binary_tree(L):
 
 if __name__ == "__main__":
     """ main program here """
-    temp = L2.copy()
-    temp = L2_sort(temp)
-    print(temp)

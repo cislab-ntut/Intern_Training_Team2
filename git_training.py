@@ -39,19 +39,37 @@ def L2_sort(L):
         將 L2 進行升序排序，排序演算法不限，唯禁止使用內建或第三方函式庫的 sort
     """
     if len(L) > 1:
-        mid = len(L)
-        left_array = L[:mid]
-        right_array = L[mid:]
+        mid = len(L) // 2
+        
+        temp_left_array = L[:mid]
+        temp_right_array = L[mid:]
 
-        left_array = L2_sort(left_array)
-        right_array = L2_sort(right_array)
+        left_array = L2_sort(temp_left_array)
+        right_array = L2_sort(temp_right_array)
 
-    right_index = 0
-    left_index = 0
-    merged_index = 0
-    while right_index < len(right_array) and left_index < len(left_array):
-        if(right_array[right_index] < left_array[left_index]):
-            
+        right_index = 0
+        left_index = 0
+        merged_index = 0
+
+        while right_index < len(right_array) and left_index < len(left_array):
+            if(right_array[right_index] < left_array[left_index]):
+                L[merged_index] = right_array[right_index]
+                right_index += 1
+            else:
+                L[merged_index] = left_array[left_index]
+                left_index += 1
+        
+            merged_index += 1
+
+        while right_index < len(right_array):
+            L[merged_index] = right_array[right_index]
+            right_index += 1
+            merged_index += 1
+
+        while left_index < len(left_array):
+            L[merged_index] = left_array[left_index]
+            left_index += 1
+            merged_index += 1
 
     return L
 
@@ -75,3 +93,6 @@ def binary_tree(L):
 
 if __name__ == "__main__":
     """ main program here """
+    temp = L2.copy()
+    temp = L2_sort(temp)
+    print(temp)

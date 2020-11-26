@@ -39,20 +39,20 @@ def L2_sort(L):
         將 L2 進行升序排序，排序演算法不限，唯禁止使用內建或第三方函式庫的 sort
     """
     if len(L) > 1:
-        mid = len(L) // 2
+        mid = len(L) // 2 #將陣列切兩半
         
-        temp_left_array = L[:mid]
-        temp_right_array = L[mid:]
+        temp_left_array = L[:mid]   #複製左半邊陣列
+        temp_right_array = L[mid:]  #複製右半邊陣列
 
-        left_array = L2_sort(temp_left_array)
+        left_array = L2_sort(temp_left_array)       #將陣列不斷切成兩半直到剩下一個
         right_array = L2_sort(temp_right_array)
 
-        right_index = 0
+        right_index = 0     #陣列右半邊陣列，將儲存到的位置 ex: [1 ,10] index = 2
         left_index = 0
-        merged_index = 0
+        merged_index = 0    #紀錄合在一起陣列需儲存的位置
 
-        while right_index < len(right_array) and left_index < len(left_array):
-            if(right_array[right_index] < left_array[left_index]):
+        while right_index < len(right_array) and left_index < len(left_array): #將切成左右兩邊的陣列結合
+            if(right_array[right_index] < left_array[left_index]): #由最小的開始放入
                 L[merged_index] = right_array[right_index]
                 right_index += 1
             else:
@@ -61,7 +61,7 @@ def L2_sort(L):
         
             merged_index += 1
 
-        while right_index < len(right_array):
+        while right_index < len(right_array):           #將剩餘陣列放入排序結果的陣列
             L[merged_index] = right_array[right_index]
             right_index += 1
             merged_index += 1

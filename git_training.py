@@ -93,7 +93,9 @@ def binary_tree(L):
     result = sorted_array_to_bst(L)
     preOrder(result)
     pass
+
 L = [val for val in L1_sort(L1) if val in L2_sort(L2)]
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x

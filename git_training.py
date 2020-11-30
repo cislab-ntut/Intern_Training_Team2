@@ -88,8 +88,35 @@ def binary_tree(L):
     """ 第四位任務：
         將 L1’ 與 L2’ 交集後的結果建成 binary tree(盡可能平衡) 並輸出
     """
+    #L = list(set(L1).intersection(set(L2)))
+    #L2_sort(L)
+    result = sorted_array_to_bst(L)
+    preOrder(result)
     pass
+L = [val for val in L1_sort(L1) if val in L2_sort(L2)]
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
+def sorted_array_to_bst(nums):#將中間值設為node
+    
+    if not nums:
+        return None
+    mid_val = len(nums)//2
+    node = TreeNode(nums[mid_val])
+    node.left = sorted_array_to_bst(nums[:mid_val])
+    node.right = sorted_array_to_bst(nums[mid_val+1:])
+    return node
+
+def preOrder(node): 
+    if not node: 
+        return      
+    print(node.val)
+    preOrder(node.left) 
+    preOrder(node.right)
 
 if __name__ == "__main__":
     """ main program here """
+binary_tree(L)

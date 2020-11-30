@@ -88,8 +88,6 @@ def binary_tree(L):
     """ 第四位任務：
         將 L1’ 與 L2’ 交集後的結果建成 binary tree(盡可能平衡) 並輸出
     """
-    #L = list(set(L1).intersection(set(L2)))
-    #L2_sort(L)
     result = sorted_array_to_bst(L)
     preOrder(result)
     pass
